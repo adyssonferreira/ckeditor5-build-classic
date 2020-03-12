@@ -29,6 +29,8 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 
+import Mathematics from 'ckeditor5-math/src/math';
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -54,7 +56,8 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	Mathematics
 ];
 
 // Editor configuration.
@@ -66,35 +69,28 @@ ClassicEditor.defaultConfig = {
 			'bold',
 			'italic',
 			'link',
-			'bulletedList',
-			'numberedList',
-			'|',
-			'indent',
-			'outdent',
-			'|',
-			'imageUpload',
-			'blockQuote',
-			'insertTable',
-			'mediaEmbed',
+			// 'bulletedList',
+			// 'numberedList',
+			// '|',
+			// 'indent',
+			// 'outdent',
+			// '|',
+			// 'imageUpload',
+			// 'blockQuote',
+			// 'insertTable',
+			// 'mediaEmbed',
+			'math',
 			'undo',
 			'redo'
 		]
 	},
-	image: {
-		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
-		]
-	},
-	table: {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells'
-		]
+
+	math: {
+		engine: 'katex', // or katex or function. E.g. (equation, element, display) => { ... }
+		outputType: 'script', // or span
+		forceOutputType: false, // forces output to use outputType
+		enablePreview: true // Enable preview view
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'pt-br'
 };
